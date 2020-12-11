@@ -1,27 +1,51 @@
-# Exto
+# *folio
+A simple theme for showcasing your work, emphasis on whitespace, transparency, and helvetica. 
 
-A portfolio theme with a blog for Stackbit. [Live Demo](https://themes.stackbit.com/demos/exto)
 
-Click the button below to use this theme in Gatsby, Hugo or Jekyll via the Stackbit site builder:
+<a href="http://bogoli.github.io/-folio/">Live Demo</a>
 
-[![Create with Stackbit](https://assets.stackbit.com/badge/create-with-stackbit.svg)](https://app.stackbit.com/create?theme=https://github.com/stackbithq/stackbit-theme-exto)
+<hr/>
 
-### About Stackbit
 
-[Stackbit](https://www.stackbit.com/) enables features like inline content editing, live previews and collaboration tools for Jamstack sites.
+## Features
 
-## Working with This Theme
+### Collections
+This Jekyll theme implements collections to let you break up your work into categories. The example is divided into poetry and portfolio, but easily revamp this into recipes, apps, short stories, limmericks, whatever your creative work is. 
+> To do this, edit the collections in the config file, create a corresponding folder, and update the portfolio and poetry source files. 
 
-This theme is written in [Unibit](https://docs.stackbit.com/unibit/), which is designed to transpile themes to work with multiple static site generators (SSG) such as Jekyll, Hugo & Gatsby.
+Three different layouts are included—the poetry layout, for a simple list of entries, the blog layout (index.html), for more detailed descriptive list of entries, and the portfolio layout. The portfolio layout overlays a descriptive hoverover on a background image. If no image is provided, the square is auto-filled with the chosen theme color. Thumbnail sizing is not necessary, as the grid crops images perfectly. 
 
-If you are looking to use this theme on a specific SSG, it is recommended that you use the [Stackbit site builder](https://app.stackbit.com/create?theme=https://github.com/stackbithq/stackbit-theme-exto) to generate the theme. The site builder will generate the SSG-specific source to your own GitHub repository. You are free to use and modify the generated source however you wish.
+### Portfolio Specifics
+You can easily add full pages for each of the projects in your portfolio. If you want one to link to an external website, create a file for it in _portfolio, and  fil in the YAML front matter as you would for another, but with a redirect, like so: 
 
-### Editing This Theme
+	---
+	layout: post
+	title: Project
+	description: a project that redirects to another website
+	img:
+	redirect: https://otherpage.com
+	--- 
 
-While we recommend using the [site builder](https://app.stackbit.com/create?theme=https://github.com/stackbithq/stackbit-theme-exto) to generate a version of the theme for any of the supported static site generators, you can develop locally using the Unibit CLI.  For details on how to install and use Unibit, visit the [documentation](https://docs.stackbit.com/site-builder/unibit/).
+### Theming
+Six beautiful theme colors have been selected to choose from. The default is red, but quickly change it by editing the _base.scss file in line 40. The color variable are listed there, as well. 
 
-### Develop Using CodeSandbox
+### Photos
+Photo formatting is made simple using rows of a 3-column system. Make photos 1/3, 2/3, or full width. Easily create beautiful grids within your blog posts and projects pages. 
 
-You can also develop this theme in the browser using Unibit via CodeSandbox.
+### Code Highlighting
+This theme implements Jekyll's built in code syntax highlighting with Pygments. Just use a liquid tag to delineate your code: 
+{% highlight python %}
+	code code code
+{% endhighlight %}
 
-[Fork in CodeSandbox](https://codesandbox.io/s/github/stackbithq/stackbit-theme-exto)
+
+<hr/>
+The MIT License (MIT)
+Copyright (c) 2015 Lia Bogoev
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+

@@ -8,7 +8,7 @@ description: Growing up as an HMC Engineer
 As graduation looms only mere months ahead, it feels like it has only been a moment since I was last faced with the exact same feelings of uncertainty and anxiety that many students face in their senior year. Of all the recent terribleness that many of us have encountered over the last few months, one benefit from the pandemic has been the opportunity to reflect on what my undergraduate experience has been and where I am moving forward. Yet, in looking towards the future, I am often reminded of the words of Danish existentialist Soren Kierkegaard.
 
 <blockquote>
-	Life can only be understood backwards; but it must be lived forwards.  
+	Life can only be understood backwards; but it must be lived forwards.<br>
 	-Soren Kierkegaard
 </blockquote>
 

@@ -1,10 +1,29 @@
 ---
 layout: post
-title:  a post with formatting and links
-date:   2015-03-15 16:40:16
-description: march & april, looking forward to summer
+title:  looking back - harvey mudd
+date:   2020-12-11 10:40:16
+description: Growing up as an HMC Engineer
 ---
-Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptown vinyl kitsch. Four loko meh 8-bit, tousled banh mi tilde forage Schlitz dreamcatcher twee 3 wolf moon. Chambray asymmetrical paleo salvia, sartorial umami four loko master cleanse drinking vinegar brunch. <a href="https://www.pinterest.com" target="blank">Pinterest</a> DIY authentic Schlitz, hoodie Intelligentsia butcher trust fund brunch shabby chic Kickstarter forage flexitarian. Direct trade <a href="https://en.wikipedia.org/wiki/Cold-pressed_juice" target="blank">cold-pressed</a> meggings stumptown plaid, pop-up taxidermy. Hoodie XOXO fingerstache scenester Echo Park. Plaid ugh Wes Anderson, freegan pug selvage fanny pack leggings pickled food truck DIY irony Banksy.
+
+As graduation looms only mere months ahead, it feels like it has only been a moment since I was last faced with the exact same feelings of uncertainty and anxiety that many students face in their senior year. Of all the recent terribleness that many of us have encountered over the last few months, one benefit from the pandemic has been the opportunity to reflect on what my undergraduate experience has been and where I am moving forward. Yet, in looking towards the future, I am often reminded of the words of Danish existentialist Soren Kierkegaard.
+
+<blockquote>
+	Life can only be understood backwards; but it must be lived forwards.  
+	-Soren Kierkegaard
+</blockquote>
+
+So over the last few days I've tried to put myself back into the shoes a rather anti-social high school girl first applying to college. In fact, the story of how I wound up at HMC is quite humerous in and of itself. As a girl from Redmond the path for someone doing well in their high school seemed inevitable.
+<ul>
+	<li>graduate</li>
+	<li>attend the Univeristy of Washington (Udub)</li>
+	<li>Major in Computer Science</li>
+	<li>Work at Microsoft</li>
+</ul>
+As I look at this checklist now, I realize I only made it a quarter of the way. Somehow, on the way to Udub I had gotten lost, traveled 1100 miles, and wound up in sunny Southern California. On paper, Harvey Mudd College lays at the odd intersection of lucrative and unheard-of. Certainly the undergraduate insitution of 800-ish students was no MIT, or Stanford when it came to recognizability, but what it did have was a remarkable connection the Claremont Colleges, a close knit community able to make someone even as closed-off as me flourish, and a demanding program able to challenge even the best. Yet, as a high schooler all I remember looking at intially was the big number 1 next to the school's name on U.S. News and World Reports.
+
+I wasn't supposed to get in. Sure, I had good grades and test scores - but I was no Einstein to say the least. Outside of school, my passions weren't coding, or building like many of my peers. I read fantasy, swam on the swim team, and worked as a life guard for some extra cash. In many ways, in those initial weeks I felt like an imposter, a poser, someone who should just go home and forget why I even came to begin with. But the more I persevered, the more I learned about others and myself. As my good friend put it: <b> "In High School you were a big fish in a small pond, at Mudd you're a big fish in a small pond filled only with other big fish."</b>
+
+
 
 #### Hipster list
 <ul>

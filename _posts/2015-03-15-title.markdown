@@ -14,8 +14,8 @@ As graduation looms only mere months ahead, it feels like it has only been a mom
 
 So over the last few days I've tried to put myself back into the shoes a rather anti-social high school girl first applying to college. In fact, the story of how I wound up at HMC is quite humerous in and of itself. As a girl from Redmond the path for someone doing well in their high school seemed inevitable.
 <ul>
-	<li>graduate</li>
-	<li>attend the Univeristy of Washington (Udub)</li>
+	<li>Graduate</li>
+	<li>Attend the Univeristy of Washington (Udub)</li>
 	<li>Major in Computer Science</li>
 	<li>Work at Microsoft</li>
 </ul>
@@ -28,7 +28,7 @@ With all the talk about fish, all I could really focus on is how much I wanted t
 My reprieve came by leveraging what HMC, as a STEM Liberal Arts College, could offer better than any other science instutions in the world - a gateway towards the liberal arts. While many young and talented technically-minded students scoff at the notions of art, history, and politics I often find myself reminding them that the liberal arts are liberal because they free the mind, expanded it, and allow us as humans to live and learn as free and independent people. As John Adam's wrote to his wife:
 
 <blockquote>
-	"Our sons ought to study mathematics and philosophy, geography, natural history and naval architecture, navigation, commerce and agriculture in order to give their children a right to study painting, poetry, music, architecture, statuary, tapestry and porcelain."
+	"Our sons ought to study mathematics and philosophy, geography, natural history and naval architecture, navigation, commerce and agriculture in order to give their children a right to study painting, poetry, music, architecture, statuary, tapestry and porcelain." <br>
 	-John Adams to his wife Abigail Adams
 </blockquote>
 

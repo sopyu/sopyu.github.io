@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Project
-description: a project with no image
+title: TapLok
+description: A MuddHacks Winner!
 img: 
 ---
 

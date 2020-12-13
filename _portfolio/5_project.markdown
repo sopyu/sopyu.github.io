@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Project
-description: a project with a background image
+title: HMC Clinic
+description: Academic-Corporate Cooperation
 img: /img/1.jpg
 ---
 

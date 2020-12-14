@@ -11,7 +11,7 @@ description: green onion pancakes are yummy!
 
 [Cong You Bing](https://en.wikipedia.org/wiki/Cong_you_bing) or Green Onion Pancakes was one of the yummiest (and easiest!) treats from my childhood. My personal recipe for one of my favorite foods is here for all posterity!
 
-Recipe #1: Cong You Bing (Green Onion Pancakes)
+Recipe #2: Cong You Bing (Green Onion Pancakes)
 =================================================================
 <b>Ingredients for the dough:</b>
 <br>300 g flour

@@ -2,7 +2,7 @@
 layout: post
 title: TapLok
 description: A MuddHacks Winner!
-img: /img/Taplok.png
+img: /img/Taplok.PNG
 ---
 
 <div class="img_row">

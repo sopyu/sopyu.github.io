@@ -2,7 +2,7 @@
 layout: post
 title: People and Processes
 description: Paper Presented to the IISE Western Region
-img:
+img: /img/iise.png
 redirect: https://drive.google.com/file/d/1egH-amuoQnbmOSmWqt9QU_Fgy7ufVZ-R/view?usp=sharing
 ---
 

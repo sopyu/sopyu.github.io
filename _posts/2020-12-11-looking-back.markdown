@@ -15,7 +15,7 @@ As graduation looms only mere months ahead, it feels like it has only been a mom
 So over the last few days I've tried to put myself back into the shoes a rather anti-social high school girl first applying to college. In fact, the story of how I wound up at HMC is quite humerous in and of itself. As a girl from Redmond the path for someone doing well in their high school seemed inevitable.
 <ul>
 	<li>Graduate</li>
-	<li>Attend the Univeristy of Washington (Udub)</li>
+	<li>Attend the University of Washington (Udub)</li>
 	<li>Major in Computer Science</li>
 	<li>Work at Microsoft</li>
 </ul>

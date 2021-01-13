@@ -16,11 +16,11 @@ MuddHacks is a unique competition at Harvey Mudd College that twists the traditi
 
 In 2018, my team noticed that nearly everybody at HMC used some sort of wheels to get to class - usually skateboards. Yet at the same time, almost everyone left their boards unattended at skateboard racks throughout the campus. After a little research, we also found that the common crime on campus was skateboard theft.
 
-With this in mind, we wanted to <b> design a way keep skateboards secure while minimally affecting existing racks and their convenience. </b> Building a product to meet this need, in 12 hours <b> TapLock </b> was born.
+With this in mind, we wanted to <b> design a way keep skateboards secure while minimally affecting existing racks and their convenience. </b> Building a product to meet this need, in 12 hours <b> TapLok </b> was born.
 
-TapLock is an intuitive solenoid-based lock attachement for HMC's skateboard racks. Unlike other lock solutions, it integrates with HMC's existing tap card system so any HMC ID holder can tap their card and quick lock and unlock their skateboard. The device adds only seconds to the amount of time students spend storing their board while granting significant peace of mind.
+TapLok is an intuitive solenoid-based lock attachement for HMC's skateboard racks. Unlike other lock solutions, it integrates with HMC's existing tap card system so any HMC ID holder can tap their card and quick lock and unlock their skateboard. The device adds only seconds to the amount of time students spend storing their board while granting significant peace of mind.
 
-As a hackathon project, TapLock was a rewarding product for the incubator, was a lot of fun to machine, and program for, and won first place at MuddHacks competition! As an industry professional, I hope to encourage more hardware hackathon experiences for more students to experiece product development in a fun and accelerated way.
+As a hackathon project, TapLok was a rewarding product for the incubator, was a lot of fun to machine, and program for, and won first place at MuddHacks competition! As an industry professional, I hope to encourage more hardware hackathon experiences for more students to experiece product development in a fun and accelerated way.
 
 
 <!--

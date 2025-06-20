@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Startup Financial Burn Model</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        .input-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: #4A5568;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            border: 1px solid #CBD5E0;
+        }
+        details > summary {
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.125rem;
+            padding: 0.75rem;
+            background-color: #F7FAFC;
+            border-radius: 0.375rem;
+            border: 1px solid #E2E8F0;
+            transition: background-color 0.2s;
+        }
+        details[open] > summary {
+            background-color: #EDF2F7;
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .kpi-title {
+            color: #718096;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .kpi-value {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #1A202C;
+        }
+        .kpi-value.positive { color: #38A169; }
+        .kpi-value.negative { color: #E53E3E; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900">Interactive Startup Financial Model</h1>
+            <p class="text-lg text-gray-600 mt-2">Model your burn rate and runway by adjusting your startup's financial assumptions.</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column: Inputs -->
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h2 class="text-2xl font-bold mb-4">Core Assumptions</h2>
+                    <div class="input-group">
+                        <label for="startingCash">Starting Cash ($)</label>
+                        <input type="number" id="startingCash" value="500000">
+                    </div>
+                    <div class="input-group">
+                        <label for="forecastMonths">Forecast Period (Months)</label>
+                        <input type="number" id="forecastMonths" value="24" min="12" max="60">
+                    </div>
+                </div>
+
+                <details class="bg-white rounded-lg shadow" open>
+                    <summary>Hardware Revenue</summary>
+                    <div class="p-6">
+                        <div class="input-group">
+                            <label for="hwUnitsSold">Monthly Units Sold</label>
+                            <input type="number" id="hwUnitsSold" value="100">
+                        </div>
+                        <div class="input-group">
+                            <label for="hwPrice">Price per Unit ($)</label>
+                            <input type="number" id="hwPrice" value="499">
+                        </div>
+                        <div class="input-group">
+                            <label for="hwCogs">COGS per Unit ($)</label>
+                            <input type="number" id="hwCogs" value="150">
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-lg shadow" open>
+                    <summary>SaaS Subscription Revenue</summary>
+                    <div class="p-6">
+                        <div class="input-group">
+                            <label for="swStartSubs">Starting Subscribers</label>
+                            <input type="number" id="swStartSubs" value="50">
+                        </div>
+                        <div class="input-group">
+                            <label for="swGrowthRate">Monthly Subscriber Growth (%)</label>
+                            <input type="number" id="swGrowthRate" value="15">
+                        </div>
+                        <div class="input-group">
+                            <label for="swArpu">Monthly ARPU ($)</label>
+                            <input type="number" id="swArpu" value="25">
+                        </div>
+                        <div class="input-group">
+                            <label for="swChurnRate">Monthly Churn Rate (%)</label>
+                            <input type="number" id="swChurnRate" value="3">
+                        </div>
+                    </div>
+                </details>
+
+                 <details class="bg-white rounded-lg shadow">
+                    <summary>Personnel</summary>
+                    <div class="p-6">
+                        <div id="personnel-list" class="space-y-4 mb-4"></div>
+                        <button id="add-employee" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition">Add Employee</button>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-lg shadow">
+                    <summary>Operating Expenses (OpEx)</summary>
+                    <div class="p-6">
+                        <div class="input-group">
+                            <label for="opexRandD">Monthly R&D ($)</label>
+                            <input type="number" id="opexRandD" value="5000">
+                        </div>
+                        <div class="input-group">
+                            <label for="opexSM">Monthly S&M ($)</label>
+                            <input type="number" id="opexSM" value="10000">
+                        </div>
+                         <div class="input-group">
+                            <label for="opexGA">Monthly G&A ($)</label>
+                            <input type="number" id="opexGA" value="3000">
+                        </div>
+                    </div>
+                </details>
+                
+                <details class="bg-white rounded-lg shadow">
+                    <summary>Capital Expenditures (CapEx)</summary>
+                    <div class="p-6">
+                        <div id="capex-list" class="space-y-4 mb-4"></div>
+                        <button id="add-capex" class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition">Add CapEx</button>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Right Column: Outputs -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- KPIs -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="kpi-card text-center">
+                        <h3 class="kpi-title">Cash Runway</h3>
+                        <p id="kpi-runway" class="kpi-value">-- months</p>
+                    </div>
+                    <div class="kpi-card text-center">
+                        <h3 class="kpi-title">Net Burn (Avg Monthly)</h3>
+                        <p id="kpi-net-burn" class="kpi-value negative">$ --</p>
+                    </div>
+                    <div class="kpi-card text-center">
+                        <h3 class="kpi-title">End MRR</h3>
+                        <p id="kpi-end-mrr" class="kpi-value">$ --</p>
+                    </div>
+                </div>
+
+                <!-- Burn Down Chart -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h2 class="text-2xl font-bold mb-4">Cash Burn Down</h2>
+                    <canvas id="burnDownChart"></canvas>
+                </div>
+
+                <!-- Data Table -->
+                <div class="bg-white p-6 rounded-lg shadow overflow-x-auto">
+                    <h2 class="text-2xl font-bold mb-4">Financial Breakdown</h2>
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="p-2 rounded-tl-md">Month</th>
+                                <th class="p-2">Revenue</th>
+                                <th class="p-2">Expenses</th>
+                                <th class="p-2">Net Flow</th>
+                                <th class="p-2 rounded-tr-md">End Cash</th>
+                            </tr>
+                        </thead>
+                        <tbody id="financial-table">
+                            <!-- JS will populate this -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- DOM ELEMENTS ---
+            const inputs = document.querySelectorAll('input, select');
+            const personnelList = document.getElementById('personnel-list');
+            const addEmployeeBtn = document.getElementById('add-employee');
+            const capexList = document.getElementById('capex-list');
+            const addCapexBtn = document.getElementById('add-capex');
+
+            // --- CHART SETUP ---
+            const ctx = document.getElementById('burnDownChart').getContext('2d');
+            let burnDownChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Cash Balance',
+                        data: [],
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 2,
+                        tension: 0.1,
+                        fill: true,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: {
+                                callback: function(value, index, values) {
+                                    return '$' + (value / 1000) + 'k';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `Cash: $${context.parsed.y.toLocaleString()}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // --- HELPER FUNCTIONS ---
+            const formatCurrency = (value) => {
+                const absValue = Math.abs(value);
+                const sign = value < 0 ? '-' : '';
+                if (absValue >= 1000000) {
+                    return `${sign}$${(absValue / 1000000).toFixed(1)}M`;
+                }
+                if (absValue >= 1000) {
+                    return `${sign}$${(absValue / 1000).toFixed(1)}k`;
+                }
+                return `${sign}$${absValue.toFixed(0)}`;
+            };
+
+            // --- DYNAMIC INPUTS ---
+            let employeeId = 0;
+            const addEmployee = (role = 'Engineer', salary = '90000', startMonth = '3') => {
+                employeeId++;
+                const div = document.createElement('div');
+                div.className = 'grid grid-cols-1 md:grid-cols-4 gap-2 items-end p-2 border rounded-md';
+                div.innerHTML = `
+                    <div><label class="text-xs">Role</label><input type="text" class="employee-role" value="${role}"></div>
+                    <div><label class="text-xs">Salary ($/yr)</label><input type="number" class="employee-salary" value="${salary}"></div>
+                    <div><label class="text-xs">Start Month</label><input type="number" class="employee-start" min="1" value="${startMonth}"></div>
+                    <button class="remove-btn bg-red-500 text-white rounded px-2 py-1 text-xs">Remove</button>
+                `;
+                personnelList.appendChild(div);
+                div.querySelector('.remove-btn').addEventListener('click', () => {
+                    div.remove();
+                    calculateAndDisplay();
+                });
+                div.querySelectorAll('input').forEach(input => input.addEventListener('input', calculateAndDisplay));
+            };
+
+            let capexId = 0;
+            const addCapex = (name = 'New Servers', cost = '15000', month = '6') => {
+                capexId++;
+                const div = document.createElement('div');
+                div.className = 'grid grid-cols-1 md:grid-cols-4 gap-2 items-end p-2 border rounded-md';
+                div.innerHTML = `
+                    <div class="md:col-span-2"><label class="text-xs">Item</label><input type="text" value="${name}"></div>
+                    <div><label class="text-xs">Cost ($)</label><input type="number" class="capex-cost" value="${cost}"></div>
+                    <div><label class="text-xs">Purchase Month</label><input type="number" class="capex-month" min="1" value="${month}"></div>
+                    <button class="remove-btn bg-red-500 text-white rounded px-2 py-1 text-xs">Remove</button>
+                `;
+                capexList.appendChild(div);
+                 div.querySelector('.remove-btn').addEventListener('click', () => {
+                    div.remove();
+                    calculateAndDisplay();
+                });
+                div.querySelectorAll('input').forEach(input => input.addEventListener('input', calculateAndDisplay));
+            };
+
+            // --- CORE CALCULATION LOGIC ---
+            const calculateAndDisplay = () => {
+                // 1. Gather all inputs
+                const params = {
+                    startingCash: parseFloat(document.getElementById('startingCash').value) || 0,
+                    forecastMonths: parseInt(document.getElementById('forecastMonths').value) || 24,
+                    hwUnitsSold: parseFloat(document.getElementById('hwUnitsSold').value) || 0,
+                    hwPrice: parseFloat(document.getElementById('hwPrice').value) || 0,
+                    hwCogs: parseFloat(document.getElementById('hwCogs').value) || 0,
+                    swStartSubs: parseFloat(document.getElementById('swStartSubs').value) || 0,
+                    swGrowthRate: (parseFloat(document.getElementById('swGrowthRate').value) || 0) / 100,
+                    swArpu: parseFloat(document.getElementById('swArpu').value) || 0,
+                    swChurnRate: (parseFloat(document.getElementById('swChurnRate').value) || 0) / 100,
+                    opexRandD: parseFloat(document.getElementById('opexRandD').value) || 0,
+                    opexSM: parseFloat(document.getElementById('opexSM').value) || 0,
+                    opexGA: parseFloat(document.getElementById('opexGA').value) || 0,
+                };
+
+                const personnel = Array.from(personnelList.children).map(div => ({
+                    salary: parseFloat(div.querySelector('.employee-salary').value) || 0,
+                    startMonth: parseInt(div.querySelector('.employee-start').value) || 1,
+                }));
+                
+                const capex = Array.from(capexList.children).map(div => ({
+                    cost: parseFloat(div.querySelector('.capex-cost').value) || 0,
+                    month: parseInt(div.querySelector('.capex-month').value) || 1,
+                }));
+
+                // 2. Perform monthly calculations
+                let monthlyData = [];
+                let currentCash = params.startingCash;
+                let currentSubs = params.swStartSubs;
+                let totalBurn = 0;
+                let burnMonths = 0;
+
+                for (let month = 1; month <= params.forecastMonths; month++) {
+                    // Revenue
+                    const hwRevenue = params.hwUnitsSold * params.hwPrice;
+                    
+                    const churnedSubs = currentSubs * params.swChurnRate;
+                    const newSubs = (currentSubs - churnedSubs) * params.swGrowthRate;
+                    currentSubs += newSubs - churnedSubs;
+                    const swRevenue = currentSubs * params.swArpu;
+
+                    const totalRevenue = hwRevenue + swRevenue;
+                    
+                    // Expenses
+                    const hwCogsTotal = params.hwUnitsSold * params.hwCogs;
+                    
+                    const payroll = personnel
+                        .filter(p => month >= p.startMonth)
+                        .reduce((sum, p) => sum + p.salary / 12, 0);
+
+                    const totalOpex = params.opexRandD + params.opexSM + params.opexGA + payroll;
+
+                    const totalCapex = capex
+                        .filter(c => month === c.month)
+                        .reduce((sum, c) => sum + c.cost, 0);
+
+                    const totalExpenses = hwCogsTotal + totalOpex + totalCapex;
+                    
+                    // Cash Flow
+                    const netFlow = totalRevenue - totalExpenses;
+                    currentCash += netFlow;
+                    
+                    if (netFlow < 0) {
+                        totalBurn += netFlow;
+                        burnMonths++;
+                    }
+
+                    monthlyData.push({
+                        month,
+                        revenue: totalRevenue,
+                        expenses: totalExpenses,
+                        netFlow,
+                        endingCash: currentCash,
+                        mrr: swRevenue
+                    });
+                    
+                    // Don't let cash go below zero for the graph
+                    if (currentCash < 0 && (monthlyData[month-2]?.endingCash > 0 || month === 1)) {
+                        currentCash = 0;
+                    }
+                }
+
+                // 3. Update UI
+                updateDashboard(monthlyData, totalBurn, burnMonths);
+                updateChart(monthlyData);
+                updateTable(monthlyData);
+            };
+
+            // --- UI UPDATE FUNCTIONS ---
+            const updateDashboard = (data, totalBurn, burnMonths) => {
+                const avgBurn = burnMonths > 0 ? Math.abs(totalBurn / burnMonths) : 0;
+                let runway = '∞';
+                if (avgBurn > 0) {
+                    const positiveCashData = data.find(d => d.endingCash <= 0);
+                    runway = positiveCashData ? `${positiveCashData.month - 1} months` : `> ${data.length} months`;
+                }
+                
+                document.getElementById('kpi-runway').textContent = runway;
+                document.getElementById('kpi-net-burn').textContent = formatCurrency(-avgBurn);
+                document.getElementById('kpi-end-mrr').textContent = formatCurrency(data[data.length - 1].mrr);
+            };
+
+            const updateChart = (data) => {
+                burnDownChart.data.labels = data.map(d => `Month ${d.month}`);
+                burnDownChart.data.datasets[0].data = data.map(d => d.endingCash > 0 ? d.endingCash: 0);
+                burnDownChart.update();
+            };
+
+            const updateTable = (data) => {
+                const tableBody = document.getElementById('financial-table');
+                tableBody.innerHTML = '';
+                data.forEach(d => {
+                    const row = document.createElement('tr');
+                    row.className = 'border-b border-gray-200 hover:bg-gray-50';
+                    row.innerHTML = `
+                        <td class="p-2 font-medium">${d.month}</td>
+                        <td class="p-2 text-green-600">${formatCurrency(d.revenue)}</td>
+                        <td class="p-2 text-red-600">${formatCurrency(d.expenses)}</td>
+                        <td class="p-2 font-medium ${d.netFlow >= 0 ? 'text-green-700' : 'text-red-700'}">${formatCurrency(d.netFlow)}</td>
+                        <td class="p-2 font-bold ${d.endingCash >= 0 ? 'text-gray-800' : 'text-red-800'}">${formatCurrency(d.endingCash)}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            };
+
+            // --- INITIALIZATION ---
+            addEmployeeBtn.addEventListener('click', () => addEmployee('New Hire', '60000', '1'));
+            addCapexBtn.addEventListener('click', () => addCapex('Equipment', '5000', '1'));
+            
+            // Add default employees for demo
+            addEmployee('Founder 1 (CEO)', '120000', '1');
+            addEmployee('Founder 2 (CTO)', '120000', '1');
+
+            inputs.forEach(input => input.addEventListener('input', calculateAndDisplay));
+            
+            calculateAndDisplay();
+        });
+    </script>
+</body>
+</html>
